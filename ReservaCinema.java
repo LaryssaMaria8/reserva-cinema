@@ -13,6 +13,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 
+
+
 class Cinema {
     private int capacidadeAssentos;
     private int escolia;
@@ -109,8 +111,13 @@ public class ReservaCinema {
             System.out.println("");
             System.out.println("");
             System.out.println("");
-            System.out.println("");
+            System.out.println(
+                    "=============================================================================================");
             System.out.println("OLÁ, SEJA BEM VINDO!");
+            System.out.println(
+                    "Para utilizar este sistema, use apenas os numerais correspondentes à frente das informações!");
+            System.out.println(
+                    "=============================================================================================");
             System.out.println("");
             System.out.println("Para fazer sua reserva escolha uma de nossas unidades:");
             System.out.println("1- Unidade Belo Horizonte");
@@ -183,10 +190,10 @@ public class ReservaCinema {
             escolhaopcao = scanner.nextInt(); // Recolhe a opção desejado
 
             // condição para o escolhaopcao, Mostrar os filmes em cartaz.
-            if (escolhaopcao<1 || escolhaopcao>=5) {
-                    escolhaopcao = 1;
-                    continue;
-                }
+            if (escolhaopcao < 1 || escolhaopcao >= 5) {
+                escolhaopcao = 1;
+                continue;
+            }
             if (escolhaopcao == 0) {
                 System.out.println("");
                 System.out.println("");
@@ -231,7 +238,7 @@ public class ReservaCinema {
                 int escolhafilme = scanner.nextInt(); // Recolhe a opção do filme desejado
 
                 // condição para o escolhafilme, onde irá dar as opçoes de horario.
-                if (escolhafilme <1 || escolhafilme>=9) {
+                if (escolhafilme < 1 || escolhafilme >= 9) {
                     escolhafilme = 1;
                     continue;
                 }
@@ -255,7 +262,11 @@ public class ReservaCinema {
                     System.out.print("=> ");
                     opcaohora = scanner.nextInt(); // valor apenas para perguntar o horario
 
-                    if (opcaohora >= 10 || opcaohora <=0) {
+                    if (opcaohora >= 10 || opcaohora <= 0) {
+                        escolhafilme = 1;
+                        continue;
+                    }
+                    if (opcaohora == 9) {
                         escolhafilme = 1;
                         continue;
                     }
@@ -318,19 +329,17 @@ public class ReservaCinema {
                                 int assentoEscolhido = scanner.nextInt();
                                 System.out.println("");
                                 cinema.reservarAssento(assentoEscolhido);
-                                if (assentoEscolhido <= 0 || assentoEscolhido >=21){
+                                if (assentoEscolhido <= 0 || assentoEscolhido >= 21) {
                                     escolhafilme = 1;
                                     continue;
 
                                 }
-                                
-
 
                                 break;
                             case 2:
                                 cinema.exibirAssentosDisponiveis();
                                 escolhafilme = 1;
-                            continue;
+                                continue;
 
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -379,15 +388,12 @@ public class ReservaCinema {
                 System.out.println("");
                 System.out.print("Qual filme em pré-venda deseja escolher? ");
                 int escolhafilmePv = scanner.nextInt(); // Recolhe a opção do filme em Pré-venda
-            if(escolhafilmePv <1 || escolhafilmePv >1){
-                System.out.println("opção inválida!");
-                        escolhaopcao = 1;
-                        continue;
-                    
+                if (escolhafilmePv < 1 || escolhafilmePv > 1) {
+                    System.out.println("opção inválida!");
+                    escolhaopcao = 1;
+                    continue;
 
-
-                
-            }
+                }
                 // condição para o escolhafilmePv
                 if (escolhafilmePv == 1) { // Atualize o intervalo conforme necessário
                     System.out.println("");
@@ -408,11 +414,15 @@ public class ReservaCinema {
                     System.out.println("");
                     opcaohora = scanner.nextInt();
 
-                    if (opcaohora >= 10 || opcaohora <=0) {
+                    if (opcaohora >= 10 || opcaohora <= 0) {
                         escolhaopcao = 1;
                         continue;
                     }
-                      if (opcaohora <1 || opcaohora >9) {
+                    if (opcaohora == 9) {
+                        escolhaopcao = 1;
+                        continue;
+                    }
+                    if (opcaohora < 1 || opcaohora > 9) {
                         System.out.println("Opção incorreta");
                         break;
                     }
@@ -432,13 +442,13 @@ public class ReservaCinema {
                         int opcaoo = scanner.nextInt();
                         scanner.nextLine();
 
-                        if(opcaoo >=5){
-                       System.out.println("Opção inválida!");
-                        break;
-                        
-}
+                        if (opcaoo >= 5) {
+                            System.out.println("Opção inválida!");
+                            break;
 
-                        if (opcaoo == 4 ) {
+                        }
+
+                        if (opcaoo == 4) {
                             escolhaopcao = 0;
                             continue;
                         }
@@ -465,22 +475,22 @@ public class ReservaCinema {
                                     escolhaopcao = 1;
                                     continue;
                                 }
-                               
+
                                 cinema.exibirAssentosDisponiveis();
                                 System.out.print("Escolha um assento: ");
                                 int assentoEscolhido = scanner.nextInt();
                                 System.out.println("");
                                 cinema.reservarAssento(assentoEscolhido);
-                                if (assentoEscolhido <= 0 || assentoEscolhido >= 21){
+                                if (assentoEscolhido <= 0 || assentoEscolhido >= 21) {
                                     escolhaopcao = 1;
                                     continue;
                                 }
 
                                 break;
-                                case 2:
+                            case 2:
                                 cinema.exibirAssentosDisponiveis();
                                 escolhaopcao = 1;
-                            continue;
+                                continue;
                             case 3:
                                 cinema.exibirAssentosDisponiveis();
                                 break;
@@ -538,7 +548,6 @@ public class ReservaCinema {
                 System.out.println("");
                 System.out.println("TIPO DE INGRESSO:");
                 System.out.println("-------------------------");
-                System.out.println("");
                 System.out.println("1. Meia - R$15,00");
                 System.out.println("2. Inteira - R$30,00");
                 System.out.println("");
@@ -563,73 +572,99 @@ public class ReservaCinema {
                     continue;
 
                 }
-                
-                
-                
-                
-                
-                
-               if(escolia == 1){
-                System.out.println("");
-                System.out.println("");
-                System.out.println("==============================================================================================================================");
-                System.out.println("RESUMO DO PEDIDO:");
-                System.out.println("Seu assento no valor de: R$"+ valoring/2 +" foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
-                System.out.println("Apresente o codigo "+ valorPagamento +" na bilheteria e pegue seu ingresso.");
-                System.out.println("==============================================================================================================================");
-                
-               }
-                
-                if(escolia == 2) {              
-                
-                System.out.println("");
-                System.out.println("");
-                System.out.println("==============================================================================================================================");
-                System.out.println("RESUMO DO PEDIDO:");
-                System.out.println("Seu assento no valor de: R$"+ valoring +" foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
-                System.out.println("Apresente o codigo "+ valorPagamento +" na bilheteria e pegue seu ingresso.");
-                System.out.println("==============================================================================================================================");
+
+                if (escolia == 1) {
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println(
+                            "==============================================================================================================================");
+                    System.out.println("RESUMO DO PEDIDO:");
+                    System.out.println("Seu assento no valor de: R$" + valoring / 2
+                            + " foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
+                    System.out.println("Apresente o codigo " + valorPagamento + " na bilheteria e pegue seu ingresso.");
+                    System.out.println(
+                            "==============================================================================================================================");
+
+                }
+
+                if (escolia == 2) {
+
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println(
+                            "==============================================================================================================================");
+                    System.out.println("RESUMO DO PEDIDO:");
+                    System.out.println("Seu assento no valor de: R$" + valoring
+                            + " foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
+                    System.out.println("Apresente o codigo " + valorPagamento + " na bilheteria e pegue seu ingresso.");
+                    System.out.println(
+                            "==============================================================================================================================");
+                }
             }
-        }
 
             if (escolhaopgt == 4) {
                 System.out.println("");
                 System.out.println("");
                 System.out.println("TIPO DE INGRESSO:");
                 System.out.println("-------------------------");
-                System.out.println("");
                 System.out.println("Você escolheu a opção promocional Cartão fidelidade - 25% de desconto ");
                 System.out.println("O valor de seu ingresso e R$22,50");
                 System.out.print(" ");
                 System.out.println("");
-                System.out.println("==============================================================================================================================");
+                System.out.println(
+                        "==============================================================================================================================");
                 System.out.println("RESUMO DO PEDIDO:");
-                System.out.println("Seu assento no valor de: R$22,50 foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
-                System.out.println("Apresente o codigo "+ valorPagamento +" na bilheteria e pegue seu ingresso.");
-                System.out.println("==============================================================================================================================");
+                System.out.println(
+                        "Seu assento no valor de: R$22,50 foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
+                System.out.println("Apresente o codigo " + valorPagamento + " na bilheteria e pegue seu ingresso.");
+                System.out.println(
+                        "==============================================================================================================================");
             }
             if (escolhaopgt == 5) {
                 System.out.println("");
                 System.out.println("");
                 System.out.println("TIPO DE INGRESSO:");
                 System.out.println("-------------------------");
-                System.out.println("");
                 System.out.println("Você escolheu a opção promocional Cartão Santander - 50% Desconto Esfera ");
                 System.out.println("O valor de seu ingresso e R$15");
                 System.out.print(" ");
                 System.out.println("");
-                System.out.println("==============================================================================================================================");
+                System.out.println(
+                        "==============================================================================================================================");
                 System.out.println("RESUMO DO PEDIDO:");
-                System.out.println("Seu assento no valor de: R$"+ valoring/2 +" foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
-                System.out.println("Apresente o codigo "+ valorPagamento +" na bilheteria e pegue seu ingresso.");
-                System.out.println("==============================================================================================================================");
+                System.out.println("Seu assento no valor de: R$" + valoring / 2
+                        + " foi reservado e terá validade até 20 minutos depois do inicio do filme. ");
+                System.out.println("Apresente o codigo " + valorPagamento + " na bilheteria e pegue seu ingresso.");
+                System.out.println(
+                        "==============================================================================================================================");
             }
             if (escolhaopgt == 6) {
                 escolhaopcao = 1;
                 continue;
             }
-            if (escolhaopgt >=7 || escolhaopgt <=0){
+            if (escolhaopgt >= 7 || escolhaopgt <= 0) {
                 System.out.println("Opção inválida! Tente novamente.");
+                continue;
+            }
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Você deseja fazer outra compra? (1-Sim / 2-Não):");
+            System.out.print("=> ");
+            int escF = scanner.nextInt();
+            if (escF == 1) {
+                escolhaopcao = 1;
+                continue;
+            }
+            if (escF == 2) {
+                System.out.println("");
+                System.out.println("");
+                System.out.println("Saindo do programa. Adeus!");
+                break;
+            }
+            if (escF == 0 || escF >= 3) {
+                System.out.println("");
+                System.out.println("Valor inválido");
+                escolhaopcao = 1;
                 continue;
             }
 
